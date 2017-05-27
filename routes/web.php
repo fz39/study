@@ -33,3 +33,17 @@ Route::post('/admin/typeAdd', 'admin\TypeController@typeAdd');
 Route::get('/admin/success/{con?}/{ac?}','admin\MessageController@success');
 // 后天添加信息失败页面
 Route::get('/admin/fail/{con?}/{ac?}','admin\MessageController@fail');
+//后台首页
+Route::get('/admin/index','Admin\IndexController@index');
+//后台商城
+Route::get('/admin/design','Admin\IndexController@design');
+//后台商城添加页面
+Route::get('/admin/insert','Admin\IndexController@insert');
+//后台商城添加
+Route::post('/admin/insert_to','Admin\IndexController@insert_to');
+//后台商城修改页面
+Route::get('/admin/update','Admin\IndexController@update');
+//后台商城修改
+Route::post('/admin/update_to','Admin\IndexController@update_to');
+//后台商城删除
+Route::post('/admin/del','Admin\IndexController@del');
