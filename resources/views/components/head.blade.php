@@ -7,8 +7,8 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/muke.css') }}">
 <script type="text/javascript" src="{{ URL::asset('js/jquery.SuperSlide.2.1.1.js') }}"></script>
 <style type="text/css">
-#menu { 
- font:12px verdana, arial, sans-serif; 
+#menu {
+ font:12px verdana, arial, sans-serif;
 }
 #menu, #menu li {
  list-style:none;

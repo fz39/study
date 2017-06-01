@@ -47,5 +47,11 @@ Route::get('/admin/update','Admin\IndexController@update');
 Route::post('/admin/update_to','Admin\IndexController@update_to');
 //后台商城删除
 Route::post('/admin/del','Admin\IndexController@del');
-//前台商城展示
-Route::get('/home/shop','home\ShopController@index');
+
+
+Route::group(['middleware'=>['web']],function(){
+    //前台商城展示
+    Route::any('/home/shop','home\ShopController@index');
+    //添加购物车
+    Route::post('/home/shopcar','home\ShopController@shopcar');
+});

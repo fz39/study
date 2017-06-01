@@ -30,8 +30,13 @@
 		  <div class="cont span_2_of_3">
 		  	<h2 class="head">Featured Products</h2>
 			<div class="top-box">
-             <?php foreach($res as $k =>$v){;?>
-			 <div class="col_1_of_3 span_1_of_3"> 
+             <?php foreach($res as $k =>$v){
+                if($k%3==0) {?>
+                 <div class="col_1_of_3 span_1_of_3" style="margin-left:0;">
+                 <?php }else{ ?>
+                    <div class="col_1_of_3 span_1_of_3">
+                <?php } ?>
+
 
 				<div class="inner_content clearfix"> <a href="single.html">
 					<div class="product_image">
@@ -410,7 +415,7 @@
     $(".shopcar").click(function(){
         var goodsid=$(this).attr('value');
         $.ajax({
-            type:'POST',
+            type:'post',
             url:'/home/shopcar',
             data:{
                 id:goodsid
