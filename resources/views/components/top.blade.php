@@ -1,5 +1,5 @@
 <!-- 顶部 -->
-<div class="width100 float_l height490 img_backg1">
+<div class="width100 float_l img_backg1">
 	<div class="width100 float_l height80 line_hei80">
         <!-- 顶部左边 -->
         <div class="float_l">
