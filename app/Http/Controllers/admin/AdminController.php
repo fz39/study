@@ -1,13 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controller\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Page;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
-class AdminController extends Controller
-{
-    public function admin(){
-        return view('admin/admin');
+class AdminController extends Controller{
+    /**
+     * 后台登录
+     */
+    public function login(){
+
+        return view('login');
     }
+
 }
