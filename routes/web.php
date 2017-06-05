@@ -11,12 +11,30 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('test', function () {
     return phpinfo();
 });
+//前台主页
+Route::get('/', 'home\IndexController@index');
+//注册
+Route::get('/register','Home\RegisterController@index');
+Route::post('/register/register','Home\RegisterController@register');
+Route::post('/register/check_code','Home\RegisterController@check_code');
+//登录
+Route::get('/login','Home\LoginController@login');
+Route::post('/login/login_pro','Home\LoginController@login_pro');
+Route::get('/login/login_pro','Home\LoginController@login_pro');
+
+Route::get('/login/logout','Home\LoginController@logout');
+//手机验证码
+Route::get('/register/phone_code','Home\RegisterController@phone_code');
+Route::get('/register/check_phone','Home\RegisterController@check_phone');
+Route::get('/register/check_email','Home\RegisterController@check_email');
+//登录验证码
+//Route::any('/login/captcha','Home\LoginController@captcha');
+//Route::any('/login/create','Home\LoginController@create');
+
+
 Route::get('/home', 'home\IndexController@index');
 // 后台登录页面
 Route::get('/admin', 'admin\LoginController@login');
