@@ -11,16 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 Route::get('test', function () {
     return phpinfo();
 });
 //前台主页
-Route::get('/', function () {
-    return view('home/index');
-});
+Route::get('/', 'home\IndexController@index');
 //注册
 Route::get('/register','Home\RegisterController@index');
 Route::post('/register/register','Home\RegisterController@register');
