@@ -131,7 +131,6 @@
 		flag_code = 1;
 	});
 
-
 	//验证手机号
 	$("#xmobile").blur(function(){
 		var user_phone = $(this).val();
@@ -140,6 +139,7 @@
 			$(".span_phone").html("<font color='red'>手机号不能为空!</font>");
 		} else {
 			if(reg_phone.test(user_phone)) {
+
 				$.ajax({
 					type: "get",
 					url: "/register/check_phone",
@@ -148,7 +148,8 @@
 						if(msg == 0) {
 							$(".span_phone").html("<font color='red'>该手机号已经被注册过了!</font>");
 						} else {
-//							$(".span_phone").html("<font color='green'>√</font>");
+							var reg_phone=/^1[3,5,8,7]\d{9}$/;
+							$(".span_phone").html("<font color='green'>√</font>");
 							flag_phone = 1;
 						}
 					}
@@ -168,8 +169,7 @@
 //						}
 //					}
 //				});
-
-
+				$(".span_phone").html("<font color='red'>手机号格式不正确!</font>");
 			}
 		}
 	});
