@@ -25,9 +25,9 @@
 		<div class="login form">
 			<div class="group">
 				<form  name="myform" novalidate action="login/login_pro" method="post" >
-				<div class="group-ipt email">
-					<input type="text" name="user_name" id="xname" required="" placeholder="用户名"/>
-					<span class="span_name"></span>
+				<div class="group-ipt phone">
+					<input type="text" name="user_name" id="xmobile"   class="ipt" placeholder="手机号/邮箱" >
+					<span class="span_phone"></span>
 				</div>
 				<div class="group-ipt password">
 					<input type="password"  id="xpassword" required="" placeholder="密码需6-12位数字、字母" style="display:none" />
@@ -36,18 +36,15 @@
 				</div>
 				{{--<div class="group-ipt verify">--}}
 					{{--<input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>--}}
-					{{--<img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">--}}
+					{{--<img src="{{$bb}}" name="imgc" id="imgc" alt="换一张" class="get-code" height="36" width="80">--}}
 				{{--</div>--}}
-
 					<input type="hidden" name="_token" value="<?php echo csrf_token();?>">
-					<input type="submit" class="login-btn register-btn" id="button" value="登录"/>
+					<div class="button">
+						<button type="submit" class="login" id="button">登录</button>
+					</div>
 				</form>
 			</div>
 		</div>
-
-		{{--<div class="button">--}}
-			{{--<button type="submit" class="login-btn register-btn" id="button">登录</button>--}}
-		{{--</div>--}}
 
 		<div class="remember clearfix">
 			<label class="remember-me"><span class="icon"><span class="zt"></span></span><input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>
@@ -101,19 +98,20 @@
 	//定义全局变量
 	var flag_name = 0;
 	var flag_pwd = 0;
-	//验证用户名
-	$("#xname").blur(function(){
-		var user_name = $("#xname").val();
-		if(user_name == "") {
-			$(".span_name").html("<font color='red'>用户名不能为空!</font>");
+
+	//验证手机号
+	$("#xmobile").blur(function(){
+		var user_phone = $(this).val();
+		var reg_phone=/^1[3,5,8,7]\d{9}$/;
+		if(user_phone == "") {
+			$(".span_phone").html("<font color='red'>手机号不能为空!</font>");
 		} else {
-			//正则验证用户名为2-5位汉字
-			var reg_name = /^[\u4e00-\u9fa5]{2,5}$/;
-			if(reg_name.test(user_name)) {
-				$(".span_name").html("<font color='green'>√</font>");
-				flag_name = 1;
+			if(reg_phone.test(user_phone)) {
+				var reg_phone=/^1[3,5,8,7]\d{9}$/;
+				$(".span_phone").html("<font color='green'>√</font>");
+				flag_phone = 1;
 			} else {
-				$(".span_name").html("<font color='red'>用户名位2-5位汉字!</font>");
+				$(".span_phone").html("<font color='red'>手机号格式不正确!</font>");
 			}
 		}
 	});
@@ -132,11 +130,20 @@
 			}
 		}
 	});
+	$(".login").click(function(){
+		if( flag_phone=1 && flag_pwd==1) {
+			return true;
+		} else {
+			return false;
+		}
+
+	})
 </script>
+
 {{--<script>--}}
-{{--$('.imgc').click(function () {--}}
-{{--$(this).attr('src','/login/create?random='+ Math.random());--}}
-{{--})--}}
+{{--//$('#imgc').click(function () {--}}
+{{--//$(this).attr('src','/login/captcha?random='+ Math.random());--}}
+{{--//})--}}
 {{--</script>--}}
 
 </body>

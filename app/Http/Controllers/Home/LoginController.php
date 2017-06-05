@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Model\LoginModel;
 use Gregwar\Captcha\CaptchaBuilder;
-use Illuminate\Support\Facades\Hash;
+use Session;
 
 class LoginController extends Controller
 {
@@ -16,27 +16,24 @@ class LoginController extends Controller
     {
         return view('home/login');
     }
-//    public function create(Request $request){
+//    public function captcha(Request $request){
 //        $builder = new CaptchaBuilder;
 //        $builder->build();
 //        $bb = $builder->inline();  //获取图形验证码的url
 //        $request->session()->put('piccode', $builder->getPhrase());  //将图形验证码的值写入到session中
 //        return view('home/login',["bb"=>$bb]);
 //    }
-//    public function error(){
-//
-//        return view('404.blade');
-//    }
+
     //登录方法
     public function login_pro()
     {
-        
         $user_name = Input::get('user_name');
         $user_password = Input::get('user_password');
         $model = new LoginModel();
         //过滤
         $user_name = $model->actionFilterWords($user_name);
         $user_password = $model->actionFilterWords($user_password);
+        
         $info = DB::table('study_user')
             ->where('user_name','=',$user_name)
             ->get()->toArray();
