@@ -33,20 +33,25 @@ class LoginController extends Controller
         //过滤
         $user_name = $model->actionFilterWords($user_name);
         $user_password = $model->actionFilterWords($user_password);
-        
-        $info = DB::table('study_user')
-            ->where('user_name','=',$user_name)
+
+        $info = DB::table('user')
+            ->where('user_phone','=',$user_name)
+            ->where('user_password','=', md5($user_password))
             ->get()->toArray();
+        // dd($info);
         $info =  json_decode( json_encode( $info),true);
+
         if (!empty($info)){
-            if ( md5($user_password) === $info[0]['user_password']){
-                setcookie('user_name',$user_name,time()+1*24*3600,'/');
-                //跳转首页
-                return redirect('/');
-            }else{
-               echo "用户名或密码不正确";
-            }
+
+            setcookie('user_name',$user_name,time()+1*24*3600,'/');
+            setcookie('user_id',$info[0]['user_id'],time()+1*24*3600,'/');
+            //跳转首页
+            return redirect('/');
+
+        }else{
+            echo "用户名或密码不正确";
         }
+
     }
     //退出登录
     public function logout()

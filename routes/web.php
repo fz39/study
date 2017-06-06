@@ -15,7 +15,7 @@ Route::get('test', function () {
     return phpinfo();
 });
 //前台主页
-Route::get('/', 'home\IndexController@index');
+Route::any('/', 'home\IndexController@index');
 //注册
 Route::get('/register','Home\RegisterController@index');
 Route::post('/register/register','Home\RegisterController@register');
@@ -72,4 +72,15 @@ Route::group(['middleware'=>['web']],function(){
     Route::any('/home/shop','home\ShopController@index');
     //添加购物车
     Route::post('/home/shopcar','home\ShopController@shopcar');
+     //查看购物车
+    Route::any('/home/shopcarlist','home\ShopController@shopcarlist');
+    //删除购物车
+    Route::any('/home/shopcardel','home\ShopController@shopcardel');
 });
+//收货地址展示
+Route::any('/home/addresslist','home\AddressController@addresslist');
+//收货地址添加页面
+Route::any('/home/addressadd','home\AddressController@addressadd');
+//收货地址三级联动
+Route::any('/home/pro','home\AddressController@pro');
+Route::post('/home/addressinser','home\AddressController@addressinser');

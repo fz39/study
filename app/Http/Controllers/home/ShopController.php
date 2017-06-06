@@ -27,8 +27,6 @@ class ShopController extends Controller
         $arr = Input::all();
         $ids = $arr['id'];
         $session = session()->all();
-//        session()->forget('gwc');
-//        session()->save();die;
         if(empty($session["gwc"]))
         {
             //如果点击的购物车是空的（第一次添加）
@@ -63,7 +61,7 @@ class ShopController extends Controller
                     }
                 }
 //                print_r($arr);die;
-                session()->put('gwc',$arr);
+               session()->put('gwc',$arr);
                 session()->save();
             }
             else
@@ -72,24 +70,78 @@ class ShopController extends Controller
                 $asg = [$ids,1];
                 //设一个小数组
                 $arr[] = $asg;
-
                 $arr1 = array_merge($arr);
                 session()->put('gwc',$arr1);
                 session()->save();
             }
-
         }
-
+            $data = [
+                'msg'=>'添加购物车成功',
+                'status'=>1
+            ];
+        echo json_encode($data);
     }
     /*
      * 购物车展示
      * */
     public function shopcarlist()
     {
+        $session = session()->all();
+        $aaa = array_key_exists('gwc', session()->all());
+        if(!empty($aaa)) {
+            $arr = $session['gwc'];
+            $res = [];
+            foreach ($arr as $v) {
+                $att = DB::select("select * from goods where goods_id='{$v[0]}'");
+                foreach ($att as $n) {
+                    $res [] = [
+                        'goods_img' => $n->goods_img,
+                        'goods_name' => $n->goods_name,
+                        'goods_price' => $n->goods_price,
+                        'goods_num' => $v[1],
+                        'goods_id' => $v[0]
+                    ];
+                }
+            }
 
+            return view('home.shopcarlist')->with('res', $res);
+        }else{
+            $res [] = [];
+            return view('home.shopcarlist')->with('res', $res);
+        }
     }
+    /*
+     * 购物车删除
+     * */
+    public function shopcardel()
+    {
+        $id = Input::all();
+        $sy = $id['id'];
+        $session = session()->all();
+        //根据索引找到该数据
+        $arr = $session["gwc"];
+        //如果数量不为1，数量减1
+        for($i=0;$i<count($arr);$i++)
+        {
+            if($arr[$i][0]==$sy) {
+                if ($arr[$i][1] > 1) {
+                    //把点到的商品id加1
+                    $arr[$i][1] -= 1;
+                } else  //如果数量为1，移除
+                    {
+                        unset($arr[$i]);
+                    }
+            }
+        }
+        session()->put('gwc',$arr);
+        session()->save();
+            $data = [
+                'msg'=>'删除成功',
+                'status'=>1
+            ];
 
-
+        return json_encode($data);
+    }
 }
 
 
