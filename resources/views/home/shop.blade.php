@@ -425,7 +425,9 @@
             },
             dataType:'json',
             success:function(data){
-                alert(data);
+                if(data.status==1){
+                    alert('添加购物车成功');
+                }
             }
         })
     })

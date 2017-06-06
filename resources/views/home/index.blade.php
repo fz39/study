@@ -2,7 +2,7 @@
 <html>
 @include('components.head')
 <body class="backg_huibai">
-@include('components.top')
+@include('components.top1')
 <!-- 轮播图 -->
 <div class="width100 float_l margin_t-405 margin_b40">
 	<div class="width_1200 margin_auto">

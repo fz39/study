@@ -35,7 +35,7 @@ class RegisterController extends Controller
         }
 
         $data['user_password'] = $user_password;
-        $re = DB::table('study_user')->insert($data);
+        $re = DB::table('user')->insert($data);
         if($re){
             //跳转首页
             return redirect('/');
@@ -88,7 +88,7 @@ class RegisterController extends Controller
     public function check_phone()
     {
         $user_phone = Input::get("user_phone");
-        $data = DB::table('study_user')->where('user_phone', $user_phone)->first();
+        $data = DB::table('user')->where('user_phone', $user_phone)->first();
         if($data) {
             echo 0;die;
         } else {
