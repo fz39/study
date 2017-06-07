@@ -31,7 +31,7 @@ Route::get('/register/check_email','Home\RegisterController@check_email');
 //Route::any('/login/captcha','Home\LoginController@captcha');
 //Route::any('/login/create','Home\LoginController@create');
 // 前台的列表
-Route::get('/home/list','home\ListController@list');
+Route::get('/home/list','home\ListController@lists');
 // 前台的课程详情
 Route::get('/home/course','home\CourseController@course');
 // 前台的视频展示

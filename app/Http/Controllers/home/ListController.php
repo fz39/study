@@ -9,7 +9,7 @@ use App\model\Type;
 
 class ListController extends Controller
 {
-    public function list(Request  $request){
+    public function lists(Request  $request){
         $type = new Type();
         $course = new Course();
         if($request->isMethod('post')){
