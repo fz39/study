@@ -10,13 +10,12 @@ class Type extends Model
     protected $primaryKey = 'id';
     public $timestamps = false;
     // 查
-    public function typeSel($rank){
+    public function typeSel($rank = 0){
         if($rank == 0){
-            return $this->select('id','type_name')->where('type_rank', '=', $rank)->get()->toArray();
+            return $this->select('id', 'type_name', 'type_rank')->where('type_rank', '=', $rank)->get()->toArray();
         }else{
-            return $this->select('id','type_name','parent_id')->where('type_rank', '=', $rank)->get()->toArray();
+            return $this->select('id', 'type_name', 'parent_id', 'type_rank')->where('type_rank', '=', $rank)->get()->toArray();
         }
-
     }
     public function typeAdd($arr){
         $this->type_name = $arr['type_name'];
@@ -28,5 +27,8 @@ class Type extends Model
     }
     public function typeHome(){
         return $this->select('id','type_name','parent_id','type_rank')->get()->toArray();
+    }
+    public function typeParent($parent_id = 0){
+        return $this->select('id', 'type_name', 'type_rank')->where('parent_id', '=', $parent_id)->get()->toArray();
     }
 }
