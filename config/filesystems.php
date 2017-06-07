@@ -38,14 +38,14 @@ return [
     | been setup for each driver as an example of the required options.
     |
     | Supported Drivers: "local", "ftp", "s3", "rackspace"
-    |
+    |=
     */
 
     'disks' => [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('uploads'),
         ],
 
         'public' => [
