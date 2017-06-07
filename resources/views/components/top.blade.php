@@ -1,6 +1,6 @@
 <!-- 顶部 -->
-<div class="width100 float_l img_backg1">
-    <div class="width100 float_l height80 line_hei80">
+<div class="width100 float_l height490 img_backg1">
+	<div class="width100 float_l height80 line_hei80">
         <!-- 顶部左边 -->
         <div class="float_l">
             <div class="float_l margin_l20">
@@ -15,7 +15,7 @@
                 </ul>
             </div>
         </div>
-
+        
         <!-- 顶部右边 -->
         <div class="float_r">
             <div class="float_l top_input">
@@ -35,5 +35,5 @@
                 <img src="{{ URL::asset('img/uiz2.png') }}">
             </div>
         </div>
-    </div>
+	</div>
 </div>
