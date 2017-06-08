@@ -10,46 +10,46 @@
             <div class="course-content">
                 <div class="course-nav-box">
                     <div class="course-nav-row clearfix">
-                        <span class="hd l">方向：</span>
+                        <span class="hd l">一级：</span>
                         <div class="bd">
                             <ul class="">
                                 <li class="course-nav-item on">
-                                    <a href="http://www.imooc.com/course/list">全部</a>
+                                    <a href="<?= url('/home/list')?>">全部</a>
                                 </li>
 								@foreach($one as $k=>$v)
                                 <li class="course-nav-item">
-                                        <a href="http://www.imooc.com/course/list?c=fe" data-ct="fe">{{ $v['type_name'] }}</a>
+                                        <a href="<?= url('/home/listCourse?rank=1&id='.$v['id']) ?>" data-ct="fe">{{ $v['type_name'] }}</a>
                                 </li>
 								@endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="course-nav-row clearfix">
-                        <span class="hd l">分类：</span>
+                        <span class="hd l">二级：</span>
                         <div class="bd">
                             <ul class="">
                                  <li class="course-nav-item on">
-                                    <a href="http://www.imooc.com/course/list?type=6">全部</a>
+                                    <a href="<?= url('/home/list')?>">全部</a>
                                 </li>
 								@foreach($two as $k=>$v)
                                 <li class="course-nav-item">
-                                    <a href="http://www.imooc.com/course/list?c=html&amp;type=6" data-id="7" data-ct="html">{{ $v['type_name'] }}</a>
+                                    <a href="<?= url('/home/listCourse?rank=2&id='.$v['id']) ?>" data-id="7" data-ct="html">{{ $v['type_name'] }}</a>
                             	</li>
 								@endforeach
                             </ul>
                         </div>
                     </div>
                     <div class="course-nav-row clearfix border_bottom_none">
-                        <span class="hd l">类型：</span>
+                        <span class="hd l">三级：</span>
                         <div class="bd">
                             <ul class="">
 
                                 <li class="course-nav-item ">
-                                        <a href="http://www.imooc.com/course/list?">全部</a>
+                                        <a href="<?= url('/home/list')?>">全部</a>
                                 </li>
 								@foreach($three as $k=>$v)
                                 <li class="course-nav-item ">
-                                        <a href="http://www.imooc.com/course/list?type=1">{{ $v['type_name'] }}</a>
+                                        <a href="<?= url('/home/listCourse?rank=3&id='.$v['id']) ?>">{{ $v['type_name'] }}</a>
                                 </li>
 								@endforeach
                             </ul>
@@ -112,7 +112,6 @@
 					<div class="szcourse-cart-o"></div>
 					<div class="shizhanpic"></div>
 				</div>
-				
 				<div class="szcourse-cart-B">
 					<div>
 						<div class="szcourse-name clearfix">{{ $expert_one['course_name'] }}</div>
@@ -154,6 +153,7 @@
 			</a>
 			@endforeach
 			</div>
+
 		<!--基础课程-->
 		@foreach($basis as $k=>$v)
 		<div class="index-card-container course-card-container container ">
