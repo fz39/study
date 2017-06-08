@@ -57,4 +57,13 @@ class Course extends Model
     {
         return $this->hasMany('App\model\Video', 'course_id', 'id');
     }
+    public function typeOne($id = 0){
+        return $this->select('id','course_name', 'course_intro', 'course_rank', 'course_people', 'course_money', 'type_one', 'type_two', 'type_three','course_grade','course_number')->where('type_one', '=', $id)->get()->toArray();
+    }
+    public function typeTwo($id = 0){
+        return $this->select('id','course_name', 'course_intro', 'course_rank', 'course_people', 'course_money', 'type_one', 'type_two', 'type_three','course_grade','course_number')->where('type_two', '=', $id)->get()->toArray();
+    }
+    public function typeThree($id = 0){
+        return $this->select('id','course_name', 'course_intro', 'course_rank', 'course_people', 'course_money', 'type_one', 'type_two', 'type_three','course_grade','course_number')->where('type_three', '=', $id)->get()->toArray();
+    }
 }

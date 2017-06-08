@@ -31,4 +31,13 @@ class Type extends Model
     public function typeParent($parent_id = 0){
         return $this->select('id', 'type_name', 'type_rank')->where('parent_id', '=', $parent_id)->get()->toArray();
     }
+    public function typeId($id = 0){
+        return $this->select('id', 'type_name','parent_id')->where('id', '=', $id)->get()->toArray();
+    }
+    public function typeInparent($data = 0){
+        return $this->select('id', 'type_name','parent_id')->whereIn("parent_id", $data)->get()->toArray();
+    }
+    public function typeInid($arr = 0){
+        return $this->select('id', 'type_name')->whereIn("id", $arr)->get()->toArray();
+    }
 }
