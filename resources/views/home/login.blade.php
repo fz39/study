@@ -21,10 +21,10 @@
 				<div class="slide-bar"></div>				
 			</div>
 		</div>
-
+				
 		<div class="login form">
 			<div class="group">
-				<form  name="myform" novalidate action="login/login_pro" method="post" >
+				<form  name="myform" novalidate action="<?=url('login/login_pro')?>" method="post" >
 				<div class="group-ipt phone">
 					<input type="text" name="user_name" id="xmobile"   class="ipt" placeholder="手机号/邮箱" >
 					<span class="span_phone"></span>
@@ -54,7 +54,7 @@
 		</div>
 		<div class="side-bar">
 			<h3>第三方账号登录</h3>
-			<a href="http://shequ.jb51.net/account/openid/weibo/bind/return_url-aHR0cDovL3NoZXF1LmpiNTEubmV0Lw==" class="btn btn-block btn-weibo"><i class="icon icon-weibo"></i> 微博登录</a>
+			<a href="http://192.168.1.31/study/public/auth/weibo" class="btn btn-block btn-weibo"><i class="icon icon-weibo"></i> 微博登录</a>
 
 			<a href="http://shequ.jb51.net/account/openid/qq/bind/return_url-aHR0cDovL3NoZXF1LmpiNTEubmV0Lw==" class="btn btn-block btn-qq"><i class="icon icon-qq"></i> QQ 登录</a>
 		</div>

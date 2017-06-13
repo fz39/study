@@ -174,6 +174,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
+         SocialiteProviders\Manager\ServiceProvider::class, // add
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -225,7 +226,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+         'Socialite' => Laravel\Socialite\Facades\Socialite::class, // add
+         'Entrust' => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

@@ -9,9 +9,11 @@
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="http://www.jscss.me">管理员</a></li>
+                <?php if(isset($_COOKIE['admin_name'])) {?>
+                <li><span id="span" style="color: #00DD00">欢迎<?php echo $_COOKIE['admin_name']?></span></li>
+                    <?php }?>
                 <li><a href="http://www.jscss.me">修改密码</a></li>
-                <li><a href="http://www.jscss.me">退出</a></li>
+                <li><a href="<?=url('/admin/login_out')?>">退出</a></li>
             </ul>
         </div>
     </div>

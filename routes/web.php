@@ -41,8 +41,17 @@ Route::get('/home/video','home\VideoController@video');
 
 
 
+// 引导用户到新浪微博的登录授权页面
+Route::get('auth/weibo', 'Auth\AuthController@weibo');
+// 用户授权后新浪微博回调的页面
+Route::get('auth/callback', 'Auth\AuthController@callback');
+Route::get('/home', 'home\IndexController@index');
 
 
+// 后台登录页面
+Route::get('/admin/login', 'Admin\LoginController@login');
+Route::post('/admin/login', 'Admin\LoginController@login_pro');
+Route::get('/admin/login_out', 'admin\LoginController@login_out');
 
 // 后台登录页面
 Route::get('/admin', 'admin\LoginController@login');

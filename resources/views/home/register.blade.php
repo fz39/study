@@ -24,7 +24,7 @@
 
 		<div class="login form">
 			<div class="group">
-				<form name="myform" novalidate action="register/register" method="post" >
+				<form name="myform" novalidate action="<?=url('register/register')?>" method="post"  id="submit">
 				<div class="group-ipt phone">
 					<input type="text" name="user_name" id="xmobile"   class="ipt" placeholder="手机号/邮箱" >
 					<span class="span_phone"></span>
@@ -45,7 +45,7 @@
 					{{--<img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">--}}
 				{{--</div>--}}
 					<div class="button">
-					<input type="submit" class="login" id="button" value="注册" />
+					<input type="submit"  id="button" value="注册"  class="login"/>
 					</div>
 					</form>
 			</div>
@@ -212,10 +212,12 @@
 		}
 	});
 	//    //点击注册时的验证
-	$(".login").click(function(){
+	$(".login").submit(function(){
 		if( flag_phone==1 && flag_pwd==1 && flag_code==1) {
+//			alert(1);
 			return true;
 		} else {
+//			alert(2);
 			return false;
 		}
 
