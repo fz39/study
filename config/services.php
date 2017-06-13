@@ -34,5 +34,10 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'weibo' => [
+        'client_id' => env('3251250426'),
+        'client_secret' => env('e090ce4323cb3fa8048a0fcd2819e4b1'),
+        'redirect' => env('http://192.168.1.31/study/public/auth/callback'),
+    ],
 
 ];
